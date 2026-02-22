@@ -1,57 +1,157 @@
-<!-- ===== Profile + Project Snippet ===== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahbir Ahmed Maheen | Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
 
-<style>
-.profile-pic {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #333;
-    margin-bottom: 15px;
-}
+<body>
 
-.project-card {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-}
+<nav class="navbar">
+<div class="logo">MAHEEN</div>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Research</a></li>
+<li><a href="#teaching">Teaching</a></li>
+<li><a href="#publications">Blogs & Posters</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
 
-.project-btn {
-    display: inline-block;
-    padding: 8px 14px;
-    background: #007acc;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.project-btn:hover {
-    background: #005f99;
-}
-</style>
-
-
-<div style="text-align:center;">
-    <img src="profile.jpg" alt="Mahbir Ahmed Maheen" class="profile-pic">
-    <h2>Mahbir Ahmed Maheen</h2>
-    <p>Materials Science | Energy Materials | Machine Learning</p>
+<section class="hero section">
+<div class="hero-text">
+<h2 class="hello-text">Hello, I'm</h2>
+<h1 class="big-name">Mahbir Ahmed Maheen</h1>
+<h3 class="subtitle">Materials Science & Computational Physics Researcher</h3>
+<p class="description">Bridging theoretical physics and machine learning to discover advanced semiconductor and electronic materials.</p>
+<a href="assets/cv.pdf" download class="cv-btn" target="_blank">Download CV</a>
 </div>
+<div class="profile-card">
+<img src="assets/profile.jpg" alt="Mahbir Ahmed Maheen">
+</div>
+</section>
 
-
-<div class="project-card">
-    <h3>Piezoelectric Energy Harvesting</h3>
+<section id="about" class="section alt">
+<h2>About Me</h2>
+<div class="about-box">
     <p>
-        Electrical energy generation from human walking using 
-        piezoelectric materials. Focused on scalable design and 
-        materials optimization.
+    I am a third-year undergraduate student in Materials and Metallurgical Engineering at Bangladesh University of Engineering & Technology, preparing for Fall 2027 PhD applications. My research focuses on computational materials science, utilizing theoretical tools and Machine Learning to drive materials discovery.
     </p>
-    
-    <a href="https://github.com/yourusername/project-link" 
-       target="_blank" 
-       class="project-btn">
-       View Project
-    </a>
 </div>
+</section>
+
+<section id="skills" class="section">
+<h2>Technical Skills</h2>
+<div class="grid">
+<div class="card">
+    <h3>Python & ML</h3>
+    <p>Scikit-learn, Pandas, Data Engineering</p>
+</div>
+<div class="card">
+    <h3>MATLAB</h3>
+    <p>Data visualization and numerical computing</p>
+</div>
+<div class="card">
+    <h3>Materials Informatics</h3>
+    <p>Pymatgen, Matminer, Materials Project API</p>
+</div>
+<div class="card">
+    <h3>Theoretical Simulation</h3>
+    <p>Density Functional Theory (DFT), Molecular Dynamics</p>
+</div>
+</div>
+</section>
+
+<section id="projects" class="section alt">
+<h2>Computational Research Projects</h2>
+<div class="grid">
+<div class="card">
+    <h3>Dielectric Constant Prediction</h3>
+    <p>Developing machine learning models to predict the dielectric constant of materials utilizing datasets from the Materials Project.</p>
+    <a href="project-template.html" style="display:inline-block; margin-top:15px; color:#2649e4; font-weight:bold; text-decoration:none;">View Project Details →</a>
+</div>
+<div class="card">
+    <h3>Photocatalytic Water Splitting</h3>
+    <p>Screening heterojunctions for photocatalysis applications involving extensive feature engineering and model selection.</p>
+</div>
+<div class="card">
+    <h3>Battery Materials Screening</h3>
+    <p>Utilizing machine learning algorithms to screen and evaluate Li-containing materials for advanced battery applications.</p>
+</div>
+</div>
+</section>
+
+<section id="teaching" class="section">
+<h2>Teaching & Mentorship</h2>
+
+<div class="manuscript-box">
+    <h3>Subject Matter Expert / Educator</h3>
+    <p><em>Shikho (Current)</em></p>
+    <p>Developing high-quality educational content and instructing students. Simplifying complex scientific and mathematical concepts to make them accessible, engaging, and easy to understand for a wide audience.</p>
+</div>
+<br>
+<div class="manuscript-box">
+    <h3>Educator</h3>
+    <p><em>10 Minute School (Previous)</em></p>
+    <p>Delivered online lessons and educational materials. Mentored students and helped build a strong foundational understanding of critical principles to help them succeed academically.</p>
+</div>
+<br>
+<div class="manuscript-box">
+    <h3>Teaching Assistant</h3>
+    <p><em>Department of Materials and Metallurgical Engineering</em></p>
+    <p>Assisted in guiding junior undergraduate students through foundational materials science concepts and computational laboratory exercises. Fostered a collaborative learning environment and provided one-on-one support.</p>
+</div>
+</section>
+
+<section id="publications" class="section alt">
+<h2>Latest Blogs & Posters</h2>
+<p style="margin-bottom: 50px;">A chronological collection of my presentations, scientific deep-dives, and video logs.</p>
+
+<div class="poster-preview-layout">
+    <div class="poster-preview-left">
+        <img src="assets/poster1.jpg" alt="Material Failures Poster">
+    </div>
+    <div class="poster-preview-right">
+        <h3>Catastrophic Accidents Caused by Material Failures</h3>
+        <p>An in-depth poster presentation analyzing the material failures behind historic disasters like the Tay Bridge collapse, Morandi Bridge failure, and the Bhopal Gas Tragedy.</p>
+        <a href="poster.html" class="read-more-btn">View Detailed Poster →</a>
+    </div>
+</div>
+
+<div class="poster-preview-layout">
+    <div class="poster-preview-left">
+        <div class="video-placeholder"><i class="fas fa-play-circle"></i></div>
+    </div>
+    <div class="poster-preview-right">
+        <h3>Why Bandgap Matters in Semiconductor Physics</h3>
+        <p>A deep dive into how bandgap defines electronic properties, optical absorption, and overall device performance.</p>
+        <a href="blog-template.html" class="read-more-btn">Read Full Vlog →</a>
+    </div>
+</div>
+
+</section>
+
+<section id="contact" class="section">
+<h2>Connect With Me</h2>
+<div class="social-links">
+<a href="https://linkedin.com/in/mahbirmaheen" target="_blank"><i class="fab fa-linkedin"></i></a>
+<a href="https://github.com/mahbirmaheen" target="_blank"><i class="fab fa-github"></i></a>
+<a href="https://scholar.google.com/citations?user=YOURID" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+</div>
+</section>
+
+<section class="cta-email">
+<div class="cta-box">
+<h2>Want to Chat?</h2>
+<p>I am always open to collaboration and research discussions.</p>
+<a href="mailto:mahbirmaheen.mse@gmail.com" class="email-btn">✉ Email Me</a>
+</div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
