@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Post | Mahbir Ahmed Maheen</title>
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar" style="position:absolute;">
+<div class="logo"><a href="../index.html">← Back to Home</a></div>
+</nav>
+
+<section class="detail-wrapper">
+    <div class="detail-hero blog-header">
+        <div class="detail-right">
+            <h1>Accelerating the Discovery of Eco-Friendly Solar Materials with Machine Learning</h1>
+
+            <p class="intro-text" style="text-align:justify;">
+        Metal halide perovskites show significant potential for next-generation solar cells; however, their commercial application is constrained by lead toxicity and chemical instability. This study presents a physics-informed machine learning framework for accurately predicting the thermodynamic stability and laboratory synthesizability of lead-free, mixed-halide tin perovskites. By integrating computational models with experimental data, this approach accelerates the discovery of stable, non-toxic materials for sustainable optoelectronic applications.
+            </p>
+            <p class="meta-text">Published: 23 February, 2026</p>
+        </div>
+        <section class="detail-wrapper">
+</div>
+
+<!-- BLOG CONTENT -->
+<div class="detail-reading">
+    <div class="reading-box">
+
+        <h2>Introduction</h2>
+
+        <p style="text-align: justify;">
+        The rapid advancement of photovoltaic technologies has established metal halide perovskites, characterized by the general crystallographic formula ABX<sub>3</sub>, as leading candidates for next-generation optoelectronics. Although lead-based perovskites have demonstrated remarkable power conversion efficiencies, their commercialization is hindered by significant thermal instability and the environmental hazards posed by water-soluble lead.
+        </p> <br>
+        <p style="text-align: justify">To address these challenges, research has shifted toward all-inorganic, lead-free variants, particularly cesium tin mixed-halide perovskites, denoted as CsSn(Cl<sub>x</sub>Br<sub>y</sub>I<sub>(1-x-y)</sub>)<sub>3</sub>. The substitution of volatile organic components with rigid Cs<sup>+</sup> ions improves thermal stability, while replacing lead with isovalent Sn<sup>2+</sup> mitigates toxicity concerns. Nonetheless, identifying optimal materials remains difficult due to the combinatorial complexity of the compositional space and the "synthesizability gap," which denotes the discrepancy between theoretically stable compounds and those that can be synthesized experimentally.</p>
+
+        <h2>Main Concept</h2>
+
+        <p style="text-align: justify;">
+        To bridge the gap between theoretical predictions and experimental realization, a physics-informed, explainable machine learning pipeline is employed. 
+        </p>
+
+        <p style="text-align: justify;">
+        <b>Synthesizability with AI:</b> Traditional trial-and-error experimental synthesis is prohibitively slow and expensive. Furthermore, standard classification algorithms struggle to predict synthesizability because the scientific literature rarely reports failed experiments, resulting in a lack of negative data points. To solve this, a Positive-Unlabeled (PU) learning strategy utilizing transductive bagging and decision tree classifiers was deployed. By treating known, literature-verified materials strictly as positive samples and hypothetical compounds as an "unlabeled" mixture, the model algorithmically filters the space of hypothetical materials. This prevents the massive misallocation of laboratory resources toward theoretically stable but practically inaccessible chemical compounds.
+        </p>
+        <p style="text-align: justify;"><b>Physics-Informed Descriptor Engineering:</b> Models based solely on stoichiometric ratios inadequately capture the quantum mechanical factors governing structural stability. Therefore, a comprehensive 76-dimensional descriptor set was developed, encompassing compositional, elemental, structural, and Density Functional Theory (DFT)-derived thermodynamic parameters. A key innovation in this feature set is the incorporation of Bartel's advanced tolerance factor (&#964), which explicitly accounts for the complex interplay between formal oxidation states and volumetric packing constraints in the lattice. This metric achieved a 92% accuracy rate in distinguishing stable perovskites from non-perovskites, significantly outperforming traditional empirical indices.</p>
+        <p style="text-align: justify;"><b>Unlocking the "Black Box" with SHAP Analysis:</b> A major criticism of advanced machine learning ensembles is their impenetrable "black box" nature. To ensure this framework generated verifiable physical hypotheses, SHAP (Shapley Additive exPlanations) analysis was integrated to explicitly map thermodynamic and geometric descriptors to macroscopic stability metrics. The SHAP models revealed profound physical insights:
+        <br>
+        <figure class="center-on-page">
+            <img src="../assets/5.png" alt="First Image" class="single-black-border" width="350">
+            <div class="poster-preview-right">
+                <figcaption class="figcaption" style="margin-left:30px">Figure 1: Global SHAP analysis identifying the dominant physical descriptors.</figcaption>
+            </div>
+        </figure>
+        <b><ul style="text-align: justify;">Atomic Weight and Covalent Hybridization:</b> The atomic weight of the B-site transition-metal cation is the most critical factor influencing synthesizability. Heavier atoms have highly polarizable valence-electron clouds that stabilize the octahedral framework by enhancing covalent orbital overlap.</ul>
+        <b><ul style="text-align: justify;">Local Lattice Distortion (LLD):</b> The model identified LLD as a critical parameter for structural stability. Engineering moderate LLD through precise halogen mixing creates a tortuous microscopic path that disrupts long-range destructive phonon propagation while preserving the electronic band structure.</p></ul>
+        <ul style="text-align: justify;"><b>Interatomic Potentials & Energy Prediction:</b> The Machine Learned Interatomic Potentials (MLIPs) exhibited remarkable robustness during large-scale testing on the full ternary CsSn(Cl,Br,I)<sub>3</sub> alloy space, with all ML-based structural relaxations successfully converging to the true DFT minima. The models achieved an incredibly low average relaxation error of just 0.5 meV/atom for total structural energy predictions. Additionally, the force-prediction Mean Absolute Error (MAE) converged tightly around 59 meV/Å.</ul>
+
+        <ul style="text-align: justify;"><b>Macroscopic Property Forecasting:</b> Advanced Regularized Greedy Forest (RGF) algorithms predicted DFT-accurate band gaps and thermodynamic decomposition energies, achieving test accuracies of 95%-98%. For specific isolated target efficiencies, optimized XGBoost implementations achieved predictive accuracy with R<sup>2</sup> values of 0.9999.</ul>
+        <figure class="center-on-page">
+            <img src="../assets/11.png" alt="First Image" class="single-black-border" width="350">
+            <div class="poster-preview-right">
+                <figcaption class="figcaption" style="margin-left:30px">Figure 2: Advance Machine Learning algorithm performance over iteration.</figcaption>
+            </div>
+        </figure>
+        <h2>Conclusion</h2>
+        <p style="text-align: justify;">This physics-informed machine learning pipeline represents a substantial, multi-disciplinary advancement in navigating the complex design space of lead-free halide perovskites. By actively shifting away from traditional Edisonian guesswork and computationally exhaustive DFT grids, this framework successfully identifies rare material candidates with mathematically robust probabilities of laboratory synthesis. By decoding the underlying physical descriptors that drive lattice stability, this data-driven methodology aggressively accelerates the discovery pipeline for the next generation of highly efficient, non-toxic, and commercially viable photovoltaic technologies.</p>
+
+    </div>
+</div>
+
+</section>
+
+<script src="../script.js"></script>
+
+</body>
+</html>
