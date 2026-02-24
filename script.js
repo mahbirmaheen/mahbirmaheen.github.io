@@ -1,14 +1,21 @@
 /* =========================
-   NAVBAR HIDE ON SCROLL (Optimized)
+   FULL SCRIPT (FIXED & OPTIMIZED)
 ========================= */
-let lastScroll = 0;
-const navbar = document.querySelector(".navbar");
-let ticking = false;
 
-function handleScroll() {
-    const currentScroll = window.pageYOffset;
+document.addEventListener("DOMContentLoaded", () => {
 
-    if (navbar) {
+    /* =========================
+       NAVBAR HIDE ON SCROLL
+    ========================= */
+    let lastScroll = 0;
+    const navbar = document.querySelector(".navbar");
+    let ticking = false;
+
+    function handleScroll() {
+        if (!navbar) return;
+
+        const currentScroll = window.scrollY;
+
         if (currentScroll > lastScroll && currentScroll > 100) {
             navbar.style.transform = "translateY(-100%)";
             navbar.style.opacity = "0";
@@ -16,43 +23,43 @@ function handleScroll() {
             navbar.style.transform = "translateY(0)";
             navbar.style.opacity = "1";
         }
+
+        lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+        ticking = false;
     }
 
-    lastScroll = currentScroll;
-    ticking = false;
-}
-
-window.addEventListener("scroll", () => {
-    if (!ticking) {
-        requestAnimationFrame(handleScroll);
-        ticking = true;
-    }
-});
-
-
-/* =========================
-   SMOOTH SCROLL FOR MENU
-========================= */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e){
-        const targetID = this.getAttribute("href");
-
-        if(targetID.length > 1){
-            e.preventDefault();
-            const targetElement = document.querySelector(targetID);
-
-            if(targetElement){
-                targetElement.scrollIntoView({ behavior: "smooth" });
-            }
+    window.addEventListener("scroll", () => {
+        if (!ticking) {
+            requestAnimationFrame(handleScroll);
+            ticking = true;
         }
+    }, { passive: true });
+
+
+
+    /* =========================
+       SMOOTH SCROLL FOR MENU
+    ========================= */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e){
+            const targetID = this.getAttribute("href");
+
+            if (targetID.length > 1) {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetID);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        });
     });
-});
 
 
-/* =========================
-   SECTION REVEAL + CTA REVEAL
-========================= */
-document.addEventListener('DOMContentLoaded', () => {
+
+    /* =========================
+       SECTION REVEAL + CTA REVEAL
+    ========================= */
 
     /* ---- Section Reveal ---- */
     const revealOptions = {
@@ -84,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("show");
-                    observer.unobserve(entry.target); // animate only once
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.2   // triggers when 20% visible
+            threshold: 0.2
         });
 
         ctaObserver.observe(ctaSection);
