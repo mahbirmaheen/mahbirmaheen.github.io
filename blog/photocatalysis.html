@@ -1,63 +1,149 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog Post | Mahbir Ahmed Maheen</title>
 <link rel="stylesheet" href="../style.css">
+
+<!-- Internal CSS only for figure alignment -->
+
+<style>
+
+.figure-box{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+
+.figure-img img{
+    width:100%;
+    max-width:600px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+.figure-caption{
+    flex:1;
+}
+
+.figure-caption h2{
+    font-size:34px;
+    color:#2d5cff;
+    margin-bottom:15px;
+}
+
+.figure-caption h3{
+    color:#dcdcdc;
+    font-weight:400;
+}
+
+/* Mobile responsive */
+@media (max-width:768px){
+    .figure-box{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+</style>
+
 </head>
+
 <body>
 
-<nav class="navbar" style="position: absolute;">
+<nav class="navbar" style="position:absolute;">
 <div class="logo"><a href="../index.html">← Back to Home</a></div>
 </nav>
 
 <section class="detail-wrapper">
-    <div class="detail-hero blog-header">
-        
-        <div class="detail-right">
-            <h1>The Power of Light: Photocatalysis as a Catalyst for the Clean Energy and Environmental Revolution</h1>
-            <p class="intro-text", style="text-align: justify";>Photocatalysis utilizes solar energy and semiconductor materials to split water, producing clean hydrogen fuel and degrading toxic environmental pollutants. This blog examines the fundamental mechanisms, advanced materials such as TiO₂ and g-C₃N₄, and innovative reactor designs that are advancing this sustainable technology.</p>
-            <p class="meta-text">Published: 23 February, 2026</p>
-        </div>
 
-        <div class="detail-left" style="width: 100%;">
-            <div class="detail-hero">
-                <div class="detail-left">
-                    <img src="../assets/photocatalysis.jpg">
-            <div class="detail-right">
-                <h1>Electron and Energy Transfer in Heterogeneous Photojunctions</h1>
-            </div>         
-        </div>
-            <!--<div class="video-placeholder" style="width:100%; max-width: 800px; height:350px;">-->
-                <h3 style="color:white;">Photocatalysis: Chemically Visualization</h3>
-            </div>
-        </div>
-        
+```
+<!-- BLOG HEADER -->
+<div class="detail-hero blog-header">
+
+    <div class="detail-right">
+        <h1>The Power of Light: Photocatalysis as a Catalyst for the Clean Energy and Environmental Revolution</h1>
+
+        <p class="intro-text" style="text-align:justify;">
+        Photocatalysis utilizes solar energy and semiconductor materials to split water, producing clean hydrogen fuel and degrading toxic environmental pollutants. This blog examines the fundamental mechanisms, advanced materials such as TiO₂ and g-C₃N₄, and innovative reactor designs that are advancing this sustainable technology.
+        </p>
+
+        <p class="meta-text">Published: 23 February, 2026</p>
     </div>
 
-    <div class="detail-reading">
-        <div class="reading-box">
-            <h2>Introduction</h2>
-            <p style="text-align: justify";>Rapid global industrial growth and population increase have led to critical challenges, including escalating energy shortages and severe environmental pollution. To achieve long-term sustainable development, the adoption of environmentally friendly technologies is imperative. Semiconductor-based photocatalysis, which directly harnesses abundant solar energy to drive chemical reactions, has emerged as a promising approach. This technology gained global recognition following the pioneering work of Fujishima and Honda in 1972, who demonstrated water splitting into hydrogen and oxygen using a titanium dioxide (TiO<sub>2</sub>) electrode. Since then, photocatalysis has expanded into a significant research field and is now considered one of the most promising solutions for <b>artificial photosynthesis</b>, producing clean hydrogen fuel, and <b>environmental remediation, including wastewater and air purification.</b></p>
-            <h2>Main Concept</h2>
-            <p style="text-align: justify";><b>Main Concept: The Fundamental Mechanism:</b> Photocatalysis involves a precise physical process. When a semiconductor is exposed to light energy (photons) with energy equal to or exceeding its bandgap, an electron is excited from the filled valence band to the empty conduction band. This excitation generates an <b>electron-hole pair.</b>These charge carriers migrate to the catalyst surface to initiate redox (reduction-oxidation) reactions.</p>
-            <p style="text-align: justify";><b>Photogenerated electrons</b> in the conduction band possess strong reducing power, enabling the reduction of water ions (H<sup>+</sup>) into hydrogen gas (H<sub>2</sub>).</p>
-            <p style="text-align: justify";>Positively charged holes in the valence band exhibit strong oxidizing power. They oxidize water to produce oxygen (O<sub>2</sub>) or react with water to generate highly reactive hydroxyl radicals (OH<sup>.</sup>). </p>
-            <p style="text-align: justify";> Simultaneously, electrons react with dissolved oxygen to form superoxide radicals (O<sub>2</sub><sup>.2-</sup>). Collectively, these Highly Reactive Oxygen Species (ROS) can completely mineralize toxic organic pollutants, such as dyes, pesticides, and solvents, into harmless carbon dioxide (CO<sub>2</sub>) and water, and effectively inactivate bacteria and viruses. The greatest enemy of this process is charge recombination-if the electron and hole recombine before reaching the surface, their energy is wasted as useless heat. </p>
-            <p style="text-align: justify";>Titanium Dioxide (TiO2) remains the benchmark for environmental remediation due to its stability, non-toxicity, low cost, and strong oxidizing power. However, its wide bandgap (approximately 3.0 to 3.2 eV) restricts absorption to ultraviolet (UV) light, which constitutes less than 10% of the solar spectrum. </p>
-            <p style="text-align: justify";>Graphitic Carbon Nitride (g−C3N4) is a metal-free, polymeric semiconductor composed entirely of earth-abundant carbon and nitrogen. It possesses a moderate bandgap of approximately 2.7 eV, enabling efficient absorption of blue and visible light. Additionally, its unique two-dimensional structure remains stable up to 600 °C and can be modified through non-metal doping, such as sulfur or iodine, or shaped into nanospheres to significantly enhance hydrogen production efficiency. </p>
-            <p style="text-align: justify";><b> Overcoming Bottlenecks: Heterojunctions and Photocatalytic Membrane Reactors:</b> To advance photocatalysis from laboratory research to large-scale industrial applications, engineers have developed effective strategies to address the technology's limitations:</p>
-            <p style="text-align: justify";><b>Z-Scheme Heterojunctions:</b> To inhibit electron-hole recombination, two different semiconductors are coupled to form a heterojunction. In the advanced Direct Z-scheme, electrons and holes are spatially separated onto distinct materials. This configuration mimics natural photosynthesis by keeping the most reactive electrons and holes apart, thereby enhancing the efficiency of water splitting and pollutant degradation. </p>
-            <p style="text-align: justify"> <b>Photocatalytic Membrane Reactors (PMRs):</b> A massive hurdle in treating wastewater with nano-powder catalysts is recovering the powder afterward. PMRs solve this by combining the photocatalytic reactor with advanced membrane filtration. The membrane acts as a physical barrier, continuously allowing clean, treated water to pass while trapping the valuable catalyst nanoparticles within the reactor for continuous reuse.  </p>
-            
+</div>
 
-            <h2>Conclusion</h2>
-            <p>Photocatalysis exemplifies the synergy between advanced materials science and solar energy. Although challenges persist, including optimizing visible-light absorption and scaling reactor designs, innovations in materials, such as g-C<sub>3</sub>N<sub>4</sub>, and systems, such as Photocatalytic Membrane Reactors, are addressing these issues. Continued nanoscale engineering of these systems advances progress toward sustainable water purification and solar-driven fuel production.</p>
-        </div>
+
+<!-- IMAGE + RIGHT SIDE CAPTION (FIXED PART) -->
+<div class="figure-box">
+
+    <div class="figure-img">
+        <img src="../assets/photocatalysis.jpg" alt="Electron and Energy Transfer in Heterogeneous Photojunctions">
     </div>
+
+    <div class="figure-caption">
+        <h2>Electron and Energy Transfer in Heterogeneous Photojunctions</h2>
+        <h3>Photocatalysis: Chemical Visualization</h3>
+    </div>
+
+</div>
+
+
+
+<!-- BLOG CONTENT -->
+<div class="detail-reading">
+    <div class="reading-box">
+
+        <h2>Introduction</h2>
+
+        <p style="text-align:justify;">
+        Rapid global industrial growth and population increase have led to critical challenges, including escalating energy shortages and severe environmental pollution. To achieve long-term sustainable development, the adoption of environmentally friendly technologies is imperative. Semiconductor-based photocatalysis, which directly harnesses abundant solar energy to drive chemical reactions, has emerged as a promising approach. This technology gained global recognition following the pioneering work of Fujishima and Honda in 1972, who demonstrated water splitting into hydrogen and oxygen using a titanium dioxide (TiO<sub>2</sub>) electrode.
+        </p>
+
+        <h2>Main Concept</h2>
+
+        <p style="text-align:justify;">
+        <b>Main Concept: The Fundamental Mechanism:</b> Photocatalysis involves a precise physical process. When a semiconductor is exposed to light energy (photons) with energy equal to or exceeding its bandgap, an electron is excited from the filled valence band to the empty conduction band. This excitation generates an <b>electron-hole pair</b>. These charge carriers migrate to the catalyst surface to initiate redox reactions.
+        </p>
+
+        <p style="text-align:justify;">
+        Photogenerated electrons in the conduction band possess strong reducing power, enabling the reduction of water ions (H<sup>+</sup>) into hydrogen gas (H<sub>2</sub>).
+        </p>
+
+        <p style="text-align:justify;">
+        Positively charged holes in the valence band oxidize water to produce oxygen (O<sub>2</sub>) or react with water to generate hydroxyl radicals (OH<sup>.</sup>).
+        </p>
+
+        <p style="text-align:justify;">
+        Electrons also react with dissolved oxygen to form superoxide radicals (O<sub>2</sub><sup>-</sup>). These Highly Reactive Oxygen Species mineralize toxic pollutants into harmless CO<sub>2</sub> and water.
+        </p>
+
+        <p style="text-align:justify;">
+        Titanium Dioxide (TiO₂) remains the benchmark photocatalyst due to its stability, non-toxicity, and strong oxidizing power, but its wide bandgap restricts absorption mainly to ultraviolet light.
+        </p>
+
+        <p style="text-align:justify;">
+        Graphitic Carbon Nitride (g-C<sub>3</sub>N<sub>4</sub>) is a metal-free semiconductor capable of visible-light absorption and improved hydrogen evolution performance.
+        </p>
+
+
+        <h2>Conclusion</h2>
+
+        <p>
+        Photocatalysis exemplifies the synergy between advanced materials science and solar energy. Continued nanoscale engineering of semiconductor heterojunctions will play a crucial role in sustainable water purification and solar-fuel production technologies.
+        </p>
+
+    </div>
+</div>
+```
+
 </section>
 
 <script src="../script.js"></script>
+
 </body>
 </html>
