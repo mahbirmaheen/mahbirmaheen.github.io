@@ -3,7 +3,7 @@ html { scroll-behavior: smooth; }
 body { background:linear-gradient(135deg,#eef2ff,#f8fafc); color:#111; padding-top:90px; overflow-x: hidden; }
 
 /* NAVBAR */
-.navbar { position:fixed; top:0; width:100%; background:#2649e4; display:flex; justify-content:space-between; align-items:center; padding:20px 90px; z-index:1000; transition:transform 0.4s ease, opacity 0.4s ease; }
+.navbar { position:flex; top:0; width:100%; background:#2649e4; display:flex; justify-content:space-between; align-items:center; padding:20px 90px; z-index:1000; transition:transform 0.4s ease, opacity 0.4s ease; }
 .logo { color:white; font-size:26px; font-weight:bold; }
 .logo a { color:white; text-decoration:none; transition: opacity 0.3s; }
 .logo a:hover { opacity: 0.8; }
