@@ -111,3 +111,55 @@ body { background:linear-gradient(135deg,#eef2ff,#f8fafc); color:#111; padding-t
     .reading-box h2 { text-align: center; }
     .reading-box { padding: 40px 20px; }
 }
+/* 1. CSS for the standalone picture with a black border */
+.single-black-border {
+    border: 1px solid black;
+    margin-bottom: 30px; /* Adds some space below this image */
+    max-width: 100%; /* Keeps the image responsive */
+}
+
+/* 2. CSS for the container with the blue border */
+.blue-container {
+    border: 2px solid blue;
+    padding: 8px; /* Creates space between the blue border and the images inside */
+    display: flex; /* Aligns the images side-by-side */
+    gap: 20px; /* Adds space between the two inner images */
+    max-width: fit-content; /* Shrinks the container to fit the images */
+}
+
+/* 3. CSS for the pictures inside the blue container */
+.blue-container img {
+    border: 2px solid black; /* Gives each inner image a black border */
+    max-width: 100%;
+}
+
+
+
+.figure {
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stacks image and caption vertically */
+    align-items: center; /* Centers the content */
+}
+
+/* Styles for all captions */
+.figcaption {
+    text-align: justify;
+    font-size: 1.1em;
+    color: #333;
+    font-style: italic; /* Makes the caption look academic */
+    line-height: 1.6; /* Keeps long captions from stretching too far */
+}
+
+
+/* This forces the container to take the full width of your page, 
+   and then pushes the content directly to the horizontal center */
+.center-on-page {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    width: 100%; /* Ensures it spans the entire white page */
+    padding-top: 40px; /* Optional: adds some space above */
+    padding-bottom: 40px; /* Optional: adds some space below */
+}
+
