@@ -1,20 +1,19 @@
 /* =========================
-   NAVBAR HIDE ON SCROLL (Optimized)
+   NAVBAR HIDE ON SCROLL (Optimized FIXED)
 ========================= */
+
 let lastScroll = 0;
 const navbar = document.querySelector(".navbar");
 let ticking = false;
 
 function handleScroll() {
-    const currentScroll = window.pageYOffset;
+    const currentScroll = document.documentElement.scrollTop;
 
     if (navbar) {
         if (currentScroll > lastScroll && currentScroll > 100) {
-            navbar.style.transform = "translateY(-100%)";
-            navbar.style.opacity = "0";
+            navbar.classList.add("nav-hidden");
         } else {
-            navbar.style.transform = "translateY(0)";
-            navbar.style.opacity = "1";
+            navbar.classList.remove("nav-hidden");
         }
     }
 
@@ -22,36 +21,21 @@ function handleScroll() {
     ticking = false;
 }
 
-window.addEventListener("scroll", () => {
+function onScroll() {
     if (!ticking) {
         requestAnimationFrame(handleScroll);
         ticking = true;
     }
-});
+}
 
-
-/* =========================
-   SMOOTH SCROLL FOR MENU
-========================= */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e){
-        const targetID = this.getAttribute("href");
-
-        if(targetID.length > 1){
-            e.preventDefault();
-            const targetElement = document.querySelector(targetID);
-
-            if(targetElement){
-                targetElement.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-    });
-});
+/* PASSIVE LISTENER — prevents scroll blocking */
+window.addEventListener("scroll", onScroll, { passive: true });
 
 
 /* =========================
    SECTION REVEAL + CTA REVEAL
 ========================= */
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ---- Section Reveal ---- */
@@ -61,12 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.12
     };
 
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
+    const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target);
+            } else {
+                entry.target.classList.remove('active');
             }
+
         });
     }, revealOptions);
 
@@ -76,19 +63,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    /* ---- EMAIL CTA REVEAL ---- */
+    /* ---- EMAIL CTA REVEAL (PLAYS EVERY TIME) ---- */
     const ctaSection = document.querySelector(".cta-email");
 
     if (ctaSection) {
-        const ctaObserver = new IntersectionObserver((entries, observer) => {
+
+        const ctaObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+
                 if (entry.isIntersecting) {
+
+                    /* reset animation */
+                    entry.target.classList.remove("show");
+                    void entry.target.offsetWidth; // force reflow
+
+                    /* replay animation */
                     entry.target.classList.add("show");
-                    observer.unobserve(entry.target); // animate only once
+
+                } else {
+                    /* remove when leaving viewport */
+                    entry.target.classList.remove("show");
                 }
+
             });
         }, {
-            threshold: 0.2   // triggers when 20% visible
+            threshold: 0.25
         });
 
         ctaObserver.observe(ctaSection);
