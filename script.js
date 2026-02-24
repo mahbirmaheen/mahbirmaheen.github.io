@@ -1,13 +1,18 @@
 /* =========================
-   NAVBAR HIDE ON SCROLL
+   OPTIMIZED SCROLL HANDLER (Navbar + CTA)
 ========================= */
 let lastScroll = 0;
 const navbar = document.querySelector(".navbar");
+const ctaSection = document.querySelector(".cta-email");
 
-window.addEventListener("scroll", () => {
+let ticking = false;
+
+function handleScroll() {
     const currentScroll = window.pageYOffset;
-    if(navbar) {
-        if(currentScroll > lastScroll && currentScroll > 100){
+
+    /* NAVBAR HIDE/SHOW */
+    if (navbar) {
+        if (currentScroll > lastScroll && currentScroll > 100) {
             navbar.style.transform = "translateY(-100%)";
             navbar.style.opacity = "0";
         } else {
@@ -15,8 +20,26 @@ window.addEventListener("scroll", () => {
             navbar.style.opacity = "1";
         }
     }
+
+    /* CTA EMAIL ANIMATION */
+    if (ctaSection) {
+        const triggerPoint = ctaSection.getBoundingClientRect().top - window.innerHeight + 100;
+        if (triggerPoint < 0) {
+            ctaSection.classList.add("show");
+        }
+    }
+
     lastScroll = currentScroll;
+    ticking = false;
+}
+
+window.addEventListener("scroll", () => {
+    if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
+    }
 });
+
 
 /* =========================
    SMOOTH SCROLL FOR MENU
@@ -34,16 +57,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+
 /* =========================
-   SECTION REVEAL ON SCROLL (Fades everything up smoothly)
+   SECTION REVEAL ON SCROLL
 ========================= */
 document.addEventListener('DOMContentLoaded', () => {
-    const revealOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+
+    const revealOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
     const sectionObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target); 
+                observer.unobserve(entry.target);
             }
         });
     }, revealOptions);
@@ -52,17 +82,5 @@ document.addEventListener('DOMContentLoaded', () => {
         section.classList.add('reveal-up');
         sectionObserver.observe(section);
     });
-});
 
-/* =========================
-   EMAIL CTA ANIMATION (Restored perfectly)
-========================= */
-const ctaSection = document.querySelector(".cta-email");
-if(ctaSection){
-    window.addEventListener("scroll", () => {
-        const triggerPoint = ctaSection.offsetTop - window.innerHeight + 100;
-        if(window.scrollY > triggerPoint){
-            ctaSection.classList.add("show");
-        }
-    });
-}
+});
