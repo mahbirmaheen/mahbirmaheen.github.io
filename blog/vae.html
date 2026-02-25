@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Post | Mahbir Ahmed Maheen</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar" style="position: absolute;">
+<div class="logo"><a href="index.html">← Back to Home</a></div>
+</nav>
+
+<section class="detail-wrapper">
+    <div class="detail-hero blog-header">
+        
+        <div class="detail-right">
+            <h1>Beyond Trial-and-Error: The Role of Variational Autoencoders in Transforming Materials Discovery</h1>
+            <!--p class="intro-text">Write a brief 1-2 sentence summary of what this post is about.</p>-->
+            <p class="meta-text">Published: 25 February, 2026</p>
+        </div>
+
+        <section class="detail-wrapper">
+    <div class="detail-hero">
+       
+    </div>
+        
+    </div>
+
+    <div class="detail-reading">
+        <div class="reading-box">
+            <h2>Introduction</h2>
+            <p style="text-align: justify">Predicting and designing materials with tailored properties is critical for addressing global challenges in energy, healthcare, electronics, and sustainability. Traditionally, new material discovery has relied on slow trial-and-error methods and computationally intensive physics-based simulations.
+                <br>However, the exponential growth in materials data and advancements in computational power have paved the way for a paradigm shift toward data-driven materials informatics. Machine learning and deep learning have emerged as powerful tools for learning complex patterns from large datasets. At the forefront of this revolution are deep generative models, specifically <b>Variational Autoencoders (VAEs)</b>, which are completely transforming how we approach inverse materials design.
+            </p>
+
+            <h2>Distinctions Between VAEs and Traditional Deep Learning Models</h2>
+            <p style="text-align: justify">Understanding the significance of VAEs requires examining traditional deterministic autoencoders. These models learn a direct mapping from input data to a lower-dimensional representation, producing a single fixed point in the latent space. Although effective for basic data compression, deterministic autoencoders depend solely on reconstruction error and lack mechanisms for calibrating uncertainty or enforcing distributional regularity. Consequently, they exhibit limited reliability in open-set scenarios and face challenges generating novel, realistic data.
+                <br>VAEs address these limitations by extending the traditional framework through a probabilistic formulation. Rather than encoding an input as a single point, a VAE represents it as a continuous probability distribution in the latent space. This probabilistic representation captures both the central tendency and uncertainty of the input data. The continuity of the latent space enables smooth interpolation between data points and sampling from the distribution to generate novel and potentially high-performing materials. 
+            </p>
+
+            <h2>Overview of the VAE</h2>
+            <p style="text-align: justify">The standard VAE architecture consists of three core components:
+                <ul style="text-align: justify"><b>The Encoder:</b> This neural network compresses high-dimensional input data, such as crystal structures or microstructure images, into an informative representation. Unlike traditional autoencoders, the VAE encoder's final layer bifurcates to output two vectors representing the mean (&mu;) and log-variance (log&sigma;<sup>2</sup>) of a Gaussian distribution.</ul>
+                <ul style="text-align: justify"><b>Latent Space Sampling (Reparameterization Trick):</b> To enable network training, VAEs employ the reparameterization trick. Rather than directly sampling the latent variable z from the predicted distribution, the model samples a random variable &epsilon; from a standard normal distribution and computes z = &mu;+&sigma;&epsilon;. This mathematical technique permits gradient backpropagation through the sampling process, ensuring the model remains differentiable during training.</ul>
+                <ul style="text-align: justify"><b>The Decoder:</b> This neural network reconstructs the original data from the sampled latent vector. It transforms a latent-space point back to the original data format while optimizing the Evidence Lower Bound (ELBO), which balances reconstruction accuracy and latent-space regularization.</ul>
+            </p>
+            <h2> Application pf VAEs in Computational Materials Science</h2>
+            <p style="text-align: justify">The primary advantage of VAEs in materials science is their application to inverse design. Rather than hypothesizing a composition and experimentally testing its properties, material structures are encoded into a stochastic latent space z ∼ <em>N</em>(μ, σ). Conditional sampling of this space, guided by target properties such as specific bandgap or formation energy, enables the decoder to generate novel, physically valid structures.
+            </p>
+            <h2>Advancements in Photocatalysis Research</h2>
+            <p style="text-align: justify">Traditional screening methods in computational materials science, particularly for predicting H<sub>2</sub> evolution under visible light in oxide-based heterojunctions, are often prohibitively slow. Variational Autoencoders circumvent these limitations. Recent generative VAE approaches have facilitated the discovery of novel two-dimensional photocatalysts for solar water splitting. By learning a latent space constrained by thermodynamic stability and bandgap, models such as Conditional VAEs (CVAEs) effectively generate specific, viable candidate structures. For example, this methodology identified stable materials including Janus SiP<sub>2</sub> monolayers with desirable bandgaps (approximately 2.1 eV) and high optical absorption, demonstrating their potential for efficient photocatalysis.</p>
+            <h2>Innovations in Battery Materials Design</h2>
+            <p style="text-align: justify">VAEs are also a powerful tool for exploring complex chemical compositional spaces in next-generation solid-state batteries. In recent applications, VAEs have compressed thousands of high-dimensional compositional and structural descriptors into a low-dimensional latent space. This creates a "materials map" allowing researchers to visualize and cluster lithium-oxygen inorganic solid electrolytes based on predicted lithium-ion conductivity. By systematically exploring this latent space, researchers can hone in on optimal lithium/oxygen ratios and alkali-metal ion migration energies to rapidly design higher-conductivity candidates.</p>
+            <h2>Future Perspectives</h2>
+            <p style="text-align: justify">VAEs are fundamentally transforming inverse materials design from a speculative, heuristic process into a principled, data-driven science. As these models integrate further with autonomous laboratories and high-throughput experimental platforms, they have the potential to halve materials development timelines. Mastery of VAEs is therefore essential for computational materials engineers aiming to advance sustainable energy and electronic technologies.</p>
+        </div>
+    </div>
+</section>
+
+<script src="script.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
