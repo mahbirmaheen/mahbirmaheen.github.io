@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Scientific Data Plotter</title>
+    
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/regression/2.0.1/regression.min.js"></script>
+    
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="navbar" style="position: absolute;">
+<div class="logo"><a href="../index.html">← Back to Home</a></div>
+</nav>
+
+    <h2>Advanced Scientific Data Plotter</h2>
+    
+    <div class="card">
+        <h3 style="margin-top:0; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">Step 1: Load Data</h3>
+        <div class="grid-2">
+            <div class="input-group">
+                <label>Upload Dataset (.csv, .xlsx, .xls)</label>
+                <input type="file" id="fileUpload" accept=".csv, .xlsx, .xls">
+                <span class="status-badge" id="uploadStatus">Data Loaded</span>
+            </div>
+
+            <div class="input-group">
+                <label>Or Paste Raw Data (X, Y1, Y2... format)</label>
+                <textarea id="manualData" placeholder="Example Data:
+Temperature, Strain_A, Strain_B
+300, 0.002, 0.001
+400, 0.015, 0.008
+500, 0.045, 0.022
+600, 0.090, 0.050"></textarea>
+            </div>
+            
+            <div style="grid-column: 1 / -1;">
+                <button class="secondary" onclick="parseAndLoadData()">Scan Data & Generate Column Options</button>
+            </div>
+        </div>
+
+        <div id="columnSelectionArea">
+            <h3 style="border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">Step 2: Configure Graph Elements</h3>
+            
+            <div class="grid-2" style="margin-bottom: 20px;">
+                <div class="input-group">
+                    <label>Select X-Axis Data (Choose 1)</label>
+                    <div class="col-selector-box" id="xColContainer"></div>
+                </div>
+                <div class="input-group">
+                    <label>Select Y-Axis Data (Choose multiple)</label>
+                    <div class="col-selector-box" id="yColContainer"></div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Curve Fit Algorithm</label>
+                    <select id="fitType" onchange="if(document.getElementById('output-wrapper').classList.contains('visible')) generatePlot();">
+                        <option value="spline" style="font-weight: bold;">Strict Spline (Perfect Interpolation, No Math Fit)</option>
+                        <option value="linear">Linear Regression</option>
+                        <option value="poly-2" selected>Quadratic Polynomial (Degree 2)</option>
+                        <option value="poly-3">Cubic Polynomial (Degree 3)</option>
+                        <option value="poly-4">Quartic Polynomial (Degree 4 - High Precision)</option>
+                        <option value="exponential">Exponential Growth/Decay</option>
+                        <option value="logarithmic">Logarithmic Fit</option>
+                        <option value="power">Power Law Fit</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Export Dimensions (Width x Height px)</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="number" id="imgWidth" value="1000" oninput="liveUpdateDimensions()">
+                        <input type="number" id="imgHeight" value="600" oninput="liveUpdateDimensions()">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Graph Title</label>
+                    <input type="text" id="graphTitle" value="Scientific Observation" oninput="liveUpdateDimensions()">
+                </div>
+
+                <div class="input-group">
+                    <label>Curve Color Sequence</label>
+                    <div class="color-palette-container">
+                        <input type="color" id="color1" value="#e63946" title="Curve 1">
+                        <input type="color" id="color2" value="#1d3557" title="Curve 2">
+                        <input type="color" id="color3" value="#2a9d8f" title="Curve 3">
+                        <input type="color" id="color4" value="#f4a261" title="Curve 4">
+                        <input type="color" id="color5" value="#8338ec" title="Curve 5">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Custom X-Axis Name</label>
+                    <input type="text" id="xLabel" value="Independent Variable">
+                </div>
+                <div class="input-group">
+                    <label>Custom Y-Axis Name</label>
+                    <input type="text" id="yLabel" value="Dependent Variable">
+                </div>
+                
+                <div style="grid-column: 1 / -1; margin-top: 10px;">
+                    <button onclick="generatePlot()">Generate Perfect-Fit Graph</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="output-wrapper">
+        <div class="plot-scroll-container">
+            <div id="plotContainer"></div>
+        </div>
+        <div id="r-squared-container"></div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
