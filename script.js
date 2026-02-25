@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
 
 
-
     /* =========================
        SMOOTH SCROLL FOR MENU
     ========================= */
@@ -56,12 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-
     /* =========================
        SECTION REVEAL + CTA REVEAL
     ========================= */
-
-    /* ---- Section Reveal ---- */
     const revealOptions = {
         root: null,
         rootMargin: '0px',
@@ -82,10 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sectionObserver.observe(section);
     });
 
-
-    /* ---- EMAIL CTA REVEAL ---- */
     const ctaSection = document.querySelector(".cta-email");
-
     if (ctaSection) {
         const ctaObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -94,24 +87,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.2
-        });
+        }, { threshold: 0.2 });
 
         ctaObserver.observe(ctaSection);
     }
-
 });
+
+
+/* =========================
+   DATA PLOTTER TOOL LOGIC
+========================= */
 
 let rawParsedData = []; 
 let dataHeaders = [];
 
-document.getElementById('fileUpload').addEventListener('change', function() {
-    if (this.files && this.files[0]) {
-        document.getElementById('uploadStatus').style.display = 'inline-block';
-        document.getElementById('uploadStatus').innerText = `File Selected: ${this.files[0].name}`;
-    }
-});
+// FIX: Check if the fileUpload element exists before adding the listener
+const fileUploadElement = document.getElementById('fileUpload');
+if (fileUploadElement) {
+    fileUploadElement.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            document.getElementById('uploadStatus').style.display = 'inline-block';
+            document.getElementById('uploadStatus').innerText = `File Selected: ${this.files[0].name}`;
+        }
+    });
+}
 
 function calculateScale(width) {
     return {
@@ -124,7 +123,8 @@ function calculateScale(width) {
 
 function liveUpdateDimensions() {
     const plotContainer = document.getElementById('plotContainer');
-    if (!plotContainer.data) return; 
+    // FIX: Prevents function from crashing if called on a page without the plotter
+    if (!plotContainer || !plotContainer.data) return; 
 
     const newWidth = parseInt(document.getElementById('imgWidth').value) || 1000;
     const newHeight = parseInt(document.getElementById('imgHeight').value) || 600;
