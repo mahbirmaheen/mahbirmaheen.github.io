@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mahbir Ahmed Maheen — Materials Science & Computational Physics Researcher. Portfolio of research, projects, and publications.">
+  <title>Mahbir Ahmed Maheen | Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/research.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    .nav-links a.active-link { color: var(--green); }
+    .nav-links a.active-link::after { width: 100%; }
+  </style>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/favicon.svg" alt="Logo" style="height: 36px; width: auto;">
+        <span>MAHEEN</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Computational Projects</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#publications">Blogs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero section" aria-label="Introduction">
+    <div class="hero-text">
+      <h2 class="hello-text" style="color: #000000 !important;">Hello, I'm</h2>
+      <h1 class="big-name">Mahbir Ahmed Maheen</h1>
+      <h3 class="subtitle">Materials Science & Computational Physics Researcher</h3>
+      <p class="description">Bridging theoretical physics and machine learning to discover advanced semiconductor and electronic materials.</p>
+      <a href="assets/cv.pdf" download class="cv-btn" target="_blank">Download CV</a>
+    </div>
+    <div class="profile-card">
+      <img src="assets/profile.jpg" alt="Mahbir Ahmed Maheen — profile photo">
+    </div>
+  </section>
+
+  <section id="about" class="section alt" aria-label="About">
+    <h2>About Me</h2>
+    <div class="about-box">
+      <p class="text-justify">
+        I am an undergraduate student in <b>Materials and Metallurgical Engineering (MME)</b> and a physics educator with a strong interest in computational materials science and computationally driven materials research. 
+      For over three years, I have taught physics to high school and engineering students, emphasizing the development of deep conceptual understanding through fundamental physical principles. Concurrently, I employ computational methods in materials research. My scholarly interests include <b>Density Functional Theory (DFT), Molecular Dynamics (MD) simulations, and Machine Learning (ML) applications</b> in materials science. I focus on understanding material dynamics at the atomic scale and integrating first-principles simulations with data-driven predictions of material properties.<br>
+        Currently, I am involved in projects to predict material properties using various machine learning approaches. My objective is to integrate physics-based simulations with Machine Learning to accelerate materials discovery and design. I intend to pursue graduate research in materials science and contribute to my country and society by the advancement of high-quality science exploration.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills" class="section" aria-label="Skills">
+    <h2>Technical Skills</h2>
+    <div class="grid">
+      <div class="card"><h3>Density Functional Theory (DFT)</h3></div>
+      <div class="card"><h3>Molecular Dynamics (MD)</h3></div>
+      <div class="card"><h3>Machine Learning</h3></div>
+      <div class="card"><h3>Quantum ESPRESSO</h3></div>
+      <div class="card"><h3>Python</h3></div>
+      <div class="card"><h3>C &amp; C++</h3></div>
+      <div class="card"><h3>SolidWorks</h3></div>
+      <div class="card"><h3>Microsoft Office</h3></div>
+      <div class="card"><h3>HTML</h3></div>
+      <div class="card"><h3>CSS</h3></div>
+    </div>
+  </section>
+
+  <section id="research" class="section alt" aria-label="Research">
+    <h2>Research</h2>
+    <div class="manuscript-box">
+      <h3><strong>Publication: </strong>Accelerated Discovery and Stability Prediction of Lead-Free Halide Perovskites via Physics-Informed Machine Learning</h3>
+      <div class="doi">
+        <strong>DOI:</strong>
+        <a href="https://doi.org/10.5281/zenodo.18776434" target="_blank" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.18776434</a>
+      </div>
+      <p class="research-desc">
+        <b>Abstract:</b> Metal halide perovskites have emerged as promising candidates for advanced photovoltaic and optoelectronic devices; however, their commercial deployment is significantly limited by the toxicity and chemical instability of lead-based compositions. All-inorganic lead-free alternatives, particularly cesium tin mixed-halide perovskites, (CsSn(Cl<sub>x</sub>Br<sub>y</sub>I<sub>(1-x-y)</sub>)3) provide a viable pathway to environmentally benign and thermally stable materials . However, identifying experimentally realizable compositions remains challenging due to the vast combinatorial compositional space and the persistent discrepancy between theoretical stability and practicalsynthesis.<br>
+        This study develops a physics-informed and explainable machine learning framework to predict the synthesizability and thermodynamic stability of mixed-halide tin perovskites . A Positive-Unlabeled learning strategy, utilizing transductive bagging and decision tree classifiers, estimates synthesis probability based on literature-derived data. A 76-dimensional descriptor set, incorporating compositional, elemental, structural, and density functional theory (DFT)-derived thermodynamic parameters, is constructed . Gradient boosting regression modelsfurther predict macroscopic properties, while SHAP analysis provides physical interpretability of the prediction.<br>
+        The model identifies a limited subset of compositions with a high probability of successful synthesis and demonstrates that the advanced tolerance factor (𝜏), B-site atomic characteristics, and local lattice distortion are dominant stability descriptors. Machine-learned atomic potentials enable effective mapping of temperature-driven structural phase properties, overcoming the limitations of ab initio molecular dynamics . This framework bridges computational predictions and experimental feasibility, establishing a general data-driven methodology that accelerates the discovery pipeline for stable, non-toxic, lead-free perovskite materials.
+      </p>
+    </div>
+  </section>
+
+  <section id="projects" class="section" aria-label="Computational Projects">
+    <h2>Computational Projects</h2>
+    <div class="grid">
+      <div class="card project-card">
+        <h3>Data-Driven Prediction of Concrete Compressive Strength (Ensemble Machine Learning)</h3>
+        <p>I developed a machine learning model to predict concrete compressive strength based on composition and curing parameters using the UCI experimental dataset. Ensemble models performed much better than linear regression (R<sup>2</sup> = 0.63), with XGBoost achieving an R<sup>2</sup> of about 0.93. The model also highlighted meaningful trends, like how curing age and the water-cement ratio affect strength.</p>
+        <a href="projects/concrete_strength.html" class="learn-btn">View Project Details →</a>
+      </div>
+      <div class="card project-card">
+        <h3>Scientific Data Visualization</h3>
+        <p>
+          I created publication-quality scientific plots using Python libraries like Matplotlib and Seaborn to explore how material composition relates to physical properties. My focus was on clear presentation, accurate labeling, and interpreting the data based on physics, not just making the visuals look good.
+        </p>
+        <a href="projects/graph.html" class="learn-btn">View To Plot Your Data →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching" class="section alt" aria-label="Teaching and Mentorship">
+    <h2>Teaching &amp; Mentorship</h2>
+    <div class="manuscript-box">
+      <h3>Subject Matter Expert </h3>
+      <em>Shikho (November 2024 - Till Date)</em>
+      <p>I teach physics to students ranging from middle school (Class 6) to those preparing for university entrance. My approach includes live sessions, mentoring, and guided practice. I also create digital learning materials, tutorial videos, and problem-solving resources to help students develop a strong understanding and analytical skills at various levels.</p>
+    </div>
+    <br>
+    <div class="manuscript-box">
+      <h3>Project Executive</h3>
+      <em>10 Minute School (January 2024 - June 2024)</em>
+      <p>I Helped implement the new national high-school science curriculum by creating clear lesson plans, explanatory lectures, and problem-solving materials focused on assessments. Using one of the largest online learning platform I turned curriculum goals into easy-to-understand teaching and exam-focused content.</p>
+    </div>
+  </section>
+
+  <section id="publications" class="section" aria-label="Blogs and Posters">
+    <h2>Latest Blogs &amp; Posters</h2>
+    <p>A chronological collection of my presentations, scientific deep-dives, and blogs.</p>
+    <div class="poster-preview-layout">
+      <div class="poster-preview-left"><img src="assets/mme313_poster.png" alt="Material Failures Poster preview"></div>
+      <div class="poster-preview-right">
+        <h3>Catastrophic Accidents Caused by Material Failures</h3>
+        <p>An in-depth poster presentation analyzing the material failures behind historic disasters like the Tay Bridge collapse, Morandi Bridge failure, and the Bhopal Gas Tragedy.</p>
+        <a href="posters/mme_313.html" class="read-more-btn">View Detailed Poster →</a>
+      </div>
+    </div>
+    <div class="poster-preview-layout">
+      <div class="poster-preview-left">
+        <div class="video-placeholder" aria-label="Video coming soon"><i class="fas fa-play-circle" aria-hidden="true"></i></div>
+      </div>
+      <div class="poster-preview-right">
+        <h3>Semiconductor Photocatalysis for Sustainable Energy and Environment</h3>
+        <p class="text-justify">This overview explains how light-driven reactions occur in semiconductors, including bandgap excitation, charge-carrier movement, and the formation of reactive oxygen species. It also highlights current photocatalysts and heterojunction design strategies used in water splitting and purification.</p>
+        <a href="photocatalysis.html" class="read-more-btn">Read Full Blog →</a>
+      </div>
+    </div>
+    <div class="poster-preview-layout">
+      <div class="poster-preview-left"><img src="assets/poster1.png" alt="VAE Blog preview image"></div>
+      <div class="poster-preview-right">
+        <h3>Variational Autoencoders for Inverse Materials Design</h3>
+        <p class="text-justify">This article takes a close look at VAE architecture and how it changes materials discovery from trial-and-error to a data-driven, probabilistic approach. It covers the encoder-decoder architecture, latent-space sampling, and practical applications in photocatalysis and the development of battery materials.</p>
+        <a href="blogs/vae.html" class="read-more-btn">View Full Blog →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section alt" aria-label="Contact">
+    <h2>Connect With Me</h2>
+    <div class="social-links">
+      <a href="https://linkedin.com/in/mahbirmaheen" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+      <a href="https://github.com/mahbirmaheen" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a href="https://scholar.google.com/citations?user=YOURID" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <section class="cta-email" aria-label="Contact invitation">
+    <div class="cta-box">
+      <h2>Want to Chat?</h2>
+      <p>I am always open to collaboration and research discussions.</p>
+      <a href="mailto:mahbirmaheen.mse@gmail.com" class="email-btn">✉ Email Me</a>
+    </div>
+  </section>
+
+  <footer style="text-align: center; padding: 30px 20px; background: var(--bg-alt); color: var(--text-light); font-size: 15px; border-top: 1px solid var(--border);">
+    &copy; 2026 Mahbir Ahmed Maheen. All rights reserved.
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/animations.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
