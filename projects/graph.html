@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Plotter | Mahbir Ahmed Maheen</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/plotter.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/regression/2.0.1/regression.min.js"></script>
+</head>
+<body>
+</nav>
+<nav class="navbar" style="position:absolute;" aria-label="Page navigation">
+    <div class="logo" style="display: flex; align-items: center; gap: 12px;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; color: var(--white);">
+        <img src="assets/favicon.svg" alt="Logo" style="height: 36px; width: auto;">
+        <span>← Back to Home</span>
+      </a>
+    </div>
+</nav>
+
+<div class="graph-page section">
+
+    <h2>Advanced Scientific Graph Plotter</h2>
+
+    <div class="plotter-card">
+        <h3 style="margin-top:0; border-bottom: 2px solid var(--border); padding-bottom: 10px;">Step 1: Load Data</h3>
+        
+        <div class="grid-2">
+            <div class="input-group">
+                <label>Upload Dataset (.csv, .xlsx, .xls)</label>
+                <input type="file" id="fileUpload" accept=".csv, .xlsx, .xls">
+                <span class="status-badge" id="uploadStatus">Data Loaded</span>
+            </div>
+
+            <div class="input-group">
+                <label>Or Paste Raw Data (X, Y1, Y2... format)</label>
+                <textarea id="manualData" placeholder="Example Data:
+Temperature, Strain_A, Strain_B
+300, 0.002, 0.001
+400, 0.015, 0.008
+500, 0.045, 0.022"></textarea>
+            </div>
+            
+            <div style="grid-column: 1 / -1;">
+                <button class="btn-secondary" onclick="parseAndLoadData()">Scan Data & Generate Column Options</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="columnSelectionArea" class="plotter-card">
+        <h3 style="margin-top:0; border-bottom: 2px solid var(--border); padding-bottom: 10px;">Step 2: Configure Graph Elements</h3>
+        
+        <div class="grid-2" style="margin-bottom: 20px;">
+            <div class="input-group">
+                <label>Select X-Axis Data (Choose 1)</label>
+                <div class="col-selector-box" id="xColContainer"></div>
+            </div>
+            <div class="input-group">
+                <label>Select Y-Axis Data (Choose multiple)</label>
+                <div class="col-selector-box" id="yColContainer"></div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="input-group">
+                <label>Curve Fit Algorithm</label>
+                <select id="fitType">
+                    <option value="spline" style="font-weight: bold;">Strict Spline (Perfect Interpolation, No Math Fit)</option>
+                    <option value="linear">Linear Regression</option>
+                    <option value="poly-2" selected>Quadratic Polynomial (Degree 2)</option>
+                    <option value="poly-3">Cubic Polynomial (Degree 3)</option>
+                    <option value="poly-4">Quartic Polynomial (Degree 4 - High Precision)</option>
+                    <option value="exponential">Exponential Growth/Decay</option>
+                    <option value="logarithmic">Logarithmic Fit</option>
+                    <option value="power">Power Law Fit</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Export Dimensions (Width x Height px)</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="imgWidth" value="1000">
+                    <input type="number" id="imgHeight" value="600">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Graph Title</label>
+                <input type="text" id="graphTitle" value="Scientific Observation">
+            </div>
+
+            <div class="input-group">
+                <label>Curve Color Sequence</label>
+                <div class="color-palette-container">
+                    <input type="color" id="color1" value="#e63946" title="Curve 1">
+                    <input type="color" id="color2" value="#1d3557" title="Curve 2">
+                    <input type="color" id="color3" value="#2a9d8f" title="Curve 3">
+                    <input type="color" id="color4" value="#f4a261" title="Curve 4">
+                    <input type="color" id="color5" value="#8338ec" title="Curve 5">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Custom X-Axis Name</label>
+                <input type="text" id="xLabel" value="Independent Variable">
+            </div>
+            <div class="input-group">
+                <label>Custom Y-Axis Name</label>
+                <input type="text" id="yLabel" value="Dependent Variable">
+            </div>
+            
+            <div style="grid-column: 1 / -1; margin-top: 10px;">
+                <button onclick="generatePlot()">Generate Perfect-Fit Graph</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="output-wrapper" style="width: 100%; max-width: 1000px; display: none;">
+        <div id="plotContainer" style="margin-bottom: 20px;"></div>
+        <div id="r-squared-container"></div>
+    </div>
+
+</div>
+<footer style="text-align: center; padding: 30px 20px; background: var(--bg-alt); color: var(--text-light); font-size: 15px; border-top: 1px solid var(--border);">
+    &copy; 2026 Mahbir Ahmed Maheen. All rights reserved.
+</footer>
+<script src="../js/plotter.js"></script>
+</body>
+</html>
