@@ -1,0 +1,22 @@
+:root {
+  --blue: #2649e4; --blue-light: #3b82f6; --green: #22c55e; --purple: #a855f7; --pink: #ec4899;
+  --white: #ffffff; --bg: #f8fafc; --bg-alt: rgba(255, 255, 255, 0.60); --text-dark: #111111; 
+  --text-mid: #444444; --text-light: #666666; --border: rgba(38, 73, 228, 0.08);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05); --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.12); --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.15);
+  --radius-sm: 8px; --radius-md: 18px; --radius-lg: 26px; --radius-pill: 50px;
+  --t-fast: 0.2s ease; --t-mid: 0.3s ease; --t-slow: 0.5s ease;
+  --sp-xs: 10px; --sp-sm: 20px; --sp-md: 40px; --sp-lg: 80px; --sp-xl: 120px;
+  --fs-xs: 14px; --fs-sm: 16px; --fs-base: 18px; --fs-md: 20px; --fs-lg: 24px; --fs-xl: 28px; --fs-2xl: 36px; --fs-3xl: 42px; --fs-hero: clamp(50px, 6vw, 90px);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth !important; overflow-y: scroll; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-text-size-adjust: 100%; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; font-size: var(--fs-base); line-height: 1.7; color: var(--text-dark); background: linear-gradient(135deg, #eef2ff, var(--bg)); background-attachment: fixed; padding-top: 90px; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; color: var(--text-dark); }
+p { line-height: 1.8; color: var(--text-mid); }
+a { color: var(--blue); text-decoration: none; transition: color var(--t-fast); }
+a:hover { color: var(--green); }
+ul { list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+.text-center { text-align: center; } .text-left { text-align: left; } .text-justify { text-align: justify; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }

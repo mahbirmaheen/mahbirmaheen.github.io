@@ -1,0 +1,242 @@
+.detail-wrapper {
+  width:           100%;
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+}
+
+
+/* 
+   DETAIL HERO — Top header section of detail pages
+   Side-by-side layout: poster thumbnail on left, text on right.
+   On blog/project pages, it centers a title block instead.
+*/
+.detail-hero {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             80px;
+  padding:         130px 60px 80px 60px; /* extra top padding for fixed navbar */
+  max-width:       1200px;
+  width:           100%;
+  text-align:      left;
+}
+
+/* left column inside hero (poster/image) */
+.detail-left {
+  flex:            1;
+  display:         flex;
+  justify-content: flex-end; /* push image toward center */
+}
+
+.detail-left img,
+.detail-left .video-placeholder {
+  width:         100%;
+  max-width:     480px;
+  border-radius: var(--radius-md);
+  box-shadow:    var(--shadow-xl);
+  transition:    transform var(--t-mid), box-shadow var(--t-mid);
+}
+
+.detail-left img:hover {
+  transform:  scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* right column inside hero (title + intro text)*/
+.detail-right {
+  flex:      1;
+  max-width: 520px;
+}
+
+.detail-right h1 {
+  font-size:     clamp(28px, 4vw, 42px);
+  margin-bottom: 20px;
+  color:         var(--blue);
+  line-height:   1.25;
+
+  /* decorative left accent bar */
+  padding-left:  16px;
+  border-left:   4px solid var(--green);
+}
+
+.detail-right p.intro-text {
+  font-size:     var(--fs-lg);
+  line-height:   1.75;
+  margin-bottom: 14px;
+  color:         #333;
+}
+
+.detail-right p.meta-text {
+  color:       var(--text-light);
+  font-size:   var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+
+/*
+   BLOG HEADER — Centered variant for blog/project pages
+   When a detail page has no poster image (just a title + text),
+   add `.blog-header` alongside `.detail-hero` to switch the
+   layout to centered / single-column.
+*/
+.blog-header {
+  flex-direction: column;
+  text-align:     center;
+  gap:            36px;
+  padding:        150px 20px 60px 20px;
+}
+
+.blog-header .detail-right {
+  max-width:   820px;
+  margin:      0 auto;
+  padding-left: 0;  /* remove left accent on centered layout */
+}
+
+.blog-header .detail-right h1 {
+  border-left: none;
+  padding-left: 0;
+  font-size:   clamp(30px, 4.5vw, 52px);
+}
+
+.blog-header .detail-left {
+  justify-content: center;
+}
+
+
+/* 
+  READING AREA — Full-width wrapper around the article
+*/
+.detail-reading {
+  width:   100%;
+  padding: 0 20px var(--sp-xl) 20px;
+}
+
+
+/*
+   READING BOX — The floating white article card
+   This is the main content body — the "page within a page."
+   Large padding, a generous max-width, and a prominent shadow
+   make it feel like a real article/document floating on screen.
+*/
+.reading-box {
+  max-width:     880px;
+  margin:        0 auto;
+  font-size:     var(--fs-md);
+  line-height:   1.85;
+  padding:       70px 80px;
+  background:    var(--white);
+  border-radius: var(--radius-md);
+  box-shadow:    0 20px 60px rgba(0, 0, 0, 0.09);
+  text-align:    left;
+  border:        1px solid var(--border);
+
+  /* subtle top accent */
+  border-top:    3px solid var(--blue);
+}
+
+/*section headings inside the reading box*/
+.reading-box h2 {
+  font-size:     var(--fs-2xl);
+  margin-top:    52px;
+  margin-bottom: 18px;
+  color:         var(--blue);
+  text-align:    left;
+
+  /* dividing line below each section heading */
+  border-bottom: 2px solid #eef2ff;
+  padding-bottom: 12px;
+
+  /*decorative underline from .section h2 */
+  display: block;
+}
+
+/* Remove margin from the very first h2 */
+.reading-box h2:first-child {
+  margin-top: 0;
+}
+
+/* lists inside the reading box*/
+.reading-box ul,
+.reading-box ol {
+  margin-left:   36px;
+  margin-bottom: 20px;
+  list-style:    disc; /* override the global `list-style: none` */
+  color:         var(--text-mid);
+  line-height:   1.85;
+}
+
+.reading-box li {
+  margin-bottom: 10px;
+  font-size:     var(--fs-md);
+}
+
+/*paragraphs inside reading box*/
+.reading-box p {
+  font-size:     var(--fs-md);
+  line-height:   1.85;
+  color:         var(--text-mid);
+  margin-bottom: 16px;
+}
+
+/* links inside reading box */
+.reading-box a {
+  color:       var(--blue);
+  font-weight: 600;
+}
+
+.reading-box a:hover {
+  color:            var(--green);
+  text-decoration:  underline;
+}
+
+/*inline code / pre blocks */
+.reading-box code {
+  background:    #f0f4ff;
+  padding:       2px 6px;
+  border-radius: 4px;
+  font-family:   'Courier New', monospace;
+  font-size:     0.9em;
+  color:         var(--blue);
+}
+
+
+/* mobile responsive */
+@media (max-width: 900px) {
+
+  /* stack hero vertically on mobile */
+  .detail-hero {
+    flex-direction: column;
+    text-align:     center;
+    padding:        100px 24px 40px;
+    gap:            30px;
+  }
+
+  .detail-right {
+    max-width: 100%;
+  }
+
+  .detail-right h1 {
+    border-left:  none;
+    padding-left: 0;
+    font-size:    clamp(24px, 6vw, 36px);
+  }
+
+  /* narrower reading box padding on mobile */
+  .reading-box {
+    padding:   40px 24px;
+    font-size: var(--fs-base);
+  }
+
+  .reading-box h2 {
+    text-align: center;
+    font-size:  var(--fs-xl);
+  }
+
+  .reading-box ul,
+  .reading-box ol {
+    margin-left: 20px;
+  }
+}
