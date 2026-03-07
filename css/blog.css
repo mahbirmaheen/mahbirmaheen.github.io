@@ -6,11 +6,6 @@
 }
 
 
-/* 
-   DETAIL HERO — Top header section of detail pages
-   Side-by-side layout: poster thumbnail on left, text on right.
-   On blog/project pages, it centers a title block instead.
-*/
 .detail-hero {
   display:         flex;
   align-items:     center;
@@ -76,12 +71,6 @@
 }
 
 
-/*
-   BLOG HEADER — Centered variant for blog/project pages
-   When a detail page has no poster image (just a title + text),
-   add `.blog-header` alongside `.detail-hero` to switch the
-   layout to centered / single-column.
-*/
 .blog-header {
   flex-direction: column;
   text-align:     center;
@@ -117,9 +106,7 @@
 
 /*
    READING BOX — The floating white article card
-   This is the main content body — the "page within a page."
-   Large padding, a generous max-width, and a prominent shadow
-   make it feel like a real article/document floating on screen.
+
 */
 .reading-box {
   max-width:     880px;
@@ -240,3 +227,4 @@
     margin-left: 20px;
   }
 }
+
