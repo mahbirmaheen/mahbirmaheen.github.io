@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="grad-light" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ade80;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <circle cx="256" cy="256" r="240" fill="none" stroke="url(#grad-light)" stroke-width="24" stroke-dasharray="100 20" />
+  
+  <polygon points="256,80 400,160 400,352 256,432 112,352 112,160" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="20" stroke-linejoin="round"/>
+  
+  <path d="M160,320 L160,200 L256,280 L352,200 L352,320" fill="none" stroke="url(#grad-light)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <circle cx="160" cy="200" r="24" fill="#ffffff"/>
+  <circle cx="256" cy="280" r="24" fill="#4ade80"/>
+  <circle cx="352" cy="200" r="24" fill="#ffffff"/>
+</svg>

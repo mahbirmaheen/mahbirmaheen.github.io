@@ -1,0 +1,214 @@
+/* =====================================================================
+   enhance.css  —  ADDITIVE styles only.
+   Nothing here overrides existing animations or hover effects; new
+   elements reuse existing .card / .manuscript-box / .section triggers
+   (.active is already applied by the site's IntersectionObservers).
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   HERO  —  three distinct research-direction pillars beside the photo.
+   The container is a direct child of .hero-text, so it inherits the
+   site's heroFadeIn entrance; only the delay is set here.
+   --------------------------------------------------------------------- */
+.hero .hero-pillars {
+  margin-top: 30px; display: flex; flex-direction: column; gap: 18px;
+  animation-delay: 0.58s;
+}
+.pillar { display: flex; align-items: flex-start; gap: 15px; }
+.pillar-ico {
+  flex-shrink: 0; width: 46px; height: 46px; border-radius: 13px;
+  display: grid; place-items: center; font-size: 21px;
+  color: var(--blue); background: rgba(38, 73, 228, 0.08);
+  transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              background 0.4s ease, color 0.4s ease;
+}
+.pillar:hover .pillar-ico {
+  transform: translateY(-4px) scale(1.08);
+  background: rgba(34, 197, 94, 0.12); color: var(--green);
+}
+.pillar-text h4 { margin: 0 0 3px; font-size: var(--fs-md); font-weight: 800; color: var(--text-dark); line-height: 1.25; }
+.pillar-text p  { margin: 0; font-size: var(--fs-sm); color: var(--text-light); line-height: 1.55; }
+
+/* ---------------------------------------------------------------------
+   TECHNICAL SKILLS  —  logo + name + animated "percentage learnt" bar
+   Reuses .card (keeps its hover-lift + stagger reveal untouched).
+   --------------------------------------------------------------------- */
+.skill-card { padding: 28px 26px; justify-content: flex-start; }
+
+.skill-head {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+}
+.skill-ico {
+  width: 48px; height: 48px; flex-shrink: 0;
+  border-radius: 13px; display: grid; place-items: center;
+  font-size: 26px; line-height: 1;
+  background: rgba(38, 73, 228, 0.07); color: var(--blue);
+  transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              background 0.4s ease;
+}
+/* new flourish layered on the existing card:hover lift */
+.card:hover .skill-ico { transform: rotate(-6deg) scale(1.1); background: rgba(34, 197, 94, 0.10); }
+.skill-head h3 { font-size: var(--fs-md); margin: 0; color: var(--text-dark); line-height: 1.3; }
+
+.skill-meter {
+  position: relative; height: 10px; border-radius: var(--radius-pill);
+  background: rgba(38, 73, 228, 0.09); overflow: hidden;
+}
+.skill-fill {
+  position: absolute; top: 0; left: 0; bottom: 0; width: 0;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* bar width + the count-up number are driven by js/skills.js so they
+   replay from zero every time the section (re)enters the viewport */
+.skill-pct {
+  display: block; margin-top: 9px; text-align: right;
+  font-size: var(--fs-xs); font-weight: 800; color: var(--blue);
+  letter-spacing: 0.3px;
+}
+
+/* ---------------------------------------------------------------------
+   RESEARCH  —  figures (left) + core-point explanation (right)
+   Reuses .manuscript-box (keeps hover-lift + reveal untouched).
+   --------------------------------------------------------------------- */
+.res-tag {
+  display: inline-block; margin-bottom: 14px;
+  font-size: 12px; font-weight: 800; letter-spacing: 0.7px; text-transform: uppercase;
+  color: var(--blue); background: rgba(38, 73, 228, 0.08);
+  padding: 5px 13px; border-radius: var(--radius-pill);
+}
+.res-tag.ongoing { color: #158a3e; background: rgba(34, 197, 94, 0.13); }
+.res-tag.review  { color: #b45309; background: rgba(245, 158, 11, 0.14); }
+.res-tag.capstone{ color: #7c3aed; background: rgba(168, 85, 247, 0.12); }
+
+.research-split {
+  display: flex; gap: 40px; align-items: flex-start; margin-top: 6px;
+}
+.research-figs {
+  flex: 0 0 30%; max-width: 320px; display: flex; flex-direction: column; gap: 20px;
+}
+.research-figs figure { margin: 0; display: block; }
+.research-figs img {
+  width: 100%; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  background: #fff; transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+/* subtle lift on the figures, layered onto the box's existing hover */
+.manuscript-box:hover .research-figs img { box-shadow: var(--shadow-md); }
+.research-figs figcaption {
+  margin-top: 7px; font-size: 12.5px; font-style: italic;
+  color: var(--text-light); line-height: 1.5;
+}
+.research-body { flex: 1; min-width: 0; }
+.research-body p {
+  font-size: var(--fs-base); line-height: 1.85; color: var(--text-mid);
+  text-align: justify; margin: 0;
+}
+/* legacy bullet styling kept for backward compatibility (unused) */
+.research-body .core { list-style: none; padding: 0; margin: 0; }
+
+/* ---------------------------------------------------------------------
+   COMPUTATIONAL PROJECTS  —  guaranteed two-up, figure left / text right
+   Reuses .card.project-card (keeps hover-lift + blue→green border).
+   --------------------------------------------------------------------- */
+#projects .grid { grid-template-columns: repeat(2, 1fr); }
+
+.proj-split { flex-direction: row; align-items: stretch; gap: 28px; }
+.proj-fig { flex: 0 0 30%; max-width: 300px; display: flex; flex-direction: column; }
+.proj-fig img {
+  width: 100%; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card:hover .proj-fig img { box-shadow: var(--shadow-md); }
+.proj-fig figcaption {
+  margin-top: 7px; font-size: 12.5px; font-style: italic;
+  color: var(--text-light); line-height: 1.5;
+}
+.proj-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.proj-body h3 { font-size: var(--fs-lg); margin-bottom: 12px; color: var(--blue); }
+.proj-body p { flex-grow: 1; font-size: var(--fs-base); line-height: 1.8; text-align: left; }
+
+/* GitHub link button (replaces the old detail-page links) */
+.github-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: auto; align-self: flex-start;
+  padding: 11px 24px; background: #24292f; color: #fff;
+  border-radius: var(--radius-pill); font-weight: 700; font-size: var(--fs-sm);
+  letter-spacing: 0.3px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.github-btn i { font-size: 20px; }
+.github-btn:hover {
+  background: #000; color: #fff;
+  transform: translateY(-4px) scale(1.04) !important;
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.30);
+}
+.proj-body .learn-btn { margin-top: auto; align-self: flex-start; }
+
+/* ---------------------------------------------------------------------
+   TEACHING  —  industrial-training subsection label
+   --------------------------------------------------------------------- */
+.subsection-label {
+  font-size: var(--fs-xl); color: var(--blue);
+  margin: 60px 0 30px; position: relative; display: inline-block;
+}
+.subsection-label::after {
+  content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: -9px; width: 48px; height: 3px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+}
+
+/* ---------------------------------------------------------------------
+   GUIDING-PRINCIPLE QUOTE  (replaces the old blogs/posters block)
+   It's a .section, so the site's reveal observer fades it up already;
+   these rules add extra flourishes keyed to that same .active class.
+   --------------------------------------------------------------------- */
+.quote-section { padding-top: 120px; padding-bottom: 120px; }
+.quote-box { max-width: 960px; margin: 0 auto; padding: 20px; position: relative; }
+.quote-mark {
+  display: block; height: 54px; font-family: Georgia, 'Times New Roman', serif;
+  font-size: 130px; line-height: 1; color: rgba(38, 73, 228, 0.14);
+  user-select: none;
+}
+.quote-accent {
+  width: 0; height: 4px; margin: 4px auto 34px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+}
+.quote-section.active .quote-accent { width: 120px; }
+
+.quote-text {
+  border: none; margin: 0 0 28px; font-style: normal;
+  font-size: clamp(22px, 3vw, 34px); font-weight: 700; line-height: 1.5;
+  color: var(--text-dark); letter-spacing: -0.3px;
+}
+/* animated highlighter that draws in when the section scrolls into view */
+.quote-text .hl {
+  background-image: linear-gradient(120deg, var(--green), var(--blue-light));
+  background-repeat: no-repeat; background-position: 0 90%;
+  background-size: 0% 34%; padding: 0 3px; border-radius: 2px;
+  transition: background-size 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
+}
+.quote-section.active .quote-text .hl { background-size: 100% 34%; }
+
+.quote-author {
+  display: block; font-style: normal; font-weight: 700;
+  font-size: var(--fs-md); color: var(--blue);
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.7s ease 0.7s, transform 0.7s ease 0.7s;
+}
+.quote-section.active .quote-author { opacity: 1; transform: translateY(0); }
+
+/* ---------------------------------------------------------------------
+   RESPONSIVE  —  stack the split layouts on small screens
+   --------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .research-split { flex-direction: column; gap: 22px; }
+  .research-figs  { flex-basis: auto; max-width: 380px; }
+  #projects .grid { grid-template-columns: 1fr; }
+  .proj-split { flex-direction: column; }
+  .proj-fig  { flex-basis: auto; max-width: 380px; }
+  .hero .hero-pillars { align-items: flex-start; max-width: 440px; margin-left: auto; margin-right: auto; }
+}
